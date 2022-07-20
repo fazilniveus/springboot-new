@@ -19,7 +19,7 @@ pipeline{
         	steps{
         		withSonarQubeEnv('sonarqube-6.7.1') { 
         			sh "mvn test -Dtest=TestControllerTests  -DfailIfNoTests=false"
-        			sh "mvn clean install sonar:sonar -DfailIfNoTests=false"
+        			sh "mvn clean install sonar:sonar"
     			}
         	}
         }
