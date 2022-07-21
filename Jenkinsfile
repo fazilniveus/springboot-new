@@ -23,6 +23,12 @@ pipeline{
     			}
         	}
         }
+        stage('Build'){
+            steps{
+                waitForQualityGate abortPipeline: true
+                
+            }
+       }
         
     }
 }
