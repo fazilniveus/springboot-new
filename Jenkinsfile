@@ -23,7 +23,7 @@ pipeline{
     			}
         	}
         }
-        stage('Build'){
+        stage('Quality'){
             steps{
                 scrpt{
                     waitForQualityGate abortPipeline: true
