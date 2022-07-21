@@ -28,5 +28,10 @@ pipeline{
                 waitForQualityGate abortPipeline: true
             }
         }
+        stage("Result") {
+            steps {
+                sh "echo 'Hurray!'"
+            }
+        }
     }
 }
