@@ -25,8 +25,9 @@ pipeline{
         }
         stage('Build'){
             steps{
-                waitForQualityGate abortPipeline: true
-                
+                scrpt{
+                    waitForQualityGate abortPipeline: true
+                }
             }
        }
         
