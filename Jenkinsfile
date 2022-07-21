@@ -25,17 +25,14 @@ pipeline{
         }
         stage("Quality gate") {
             steps {
-                //waitForQualityGate abortPipeline: true
-                if ("${json.projectStatus.status}" == "ERROR") {
-                            currentBuild.result = 'FAILURE'
-                            error('Pipeline aborted due to quality gate failure.')
-                    }
+                def qualitygate = waitForQualityGate()
+                if (qualitygate.status != "OK") {
+                    error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+                 }
+                    
             }
         }
-        stage("Result") {
-            steps {
-                sh "echo 'Hurray!'"
-            }
+
         }
     }
 }
