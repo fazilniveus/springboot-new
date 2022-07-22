@@ -1,3 +1,23 @@
+def SendEmailNotification(String result) {
+  
+    // config 
+    def to = emailextrecipients([
+           requestor()
+    ])
+    
+    // set variables
+    def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${result}"
+    def content = '${JELLY_SCRIPT,template="html"}'
+
+    // send email
+    if(to != null && !to.isEmpty()) {
+        env.ForEmailPlugin = env.WORKSPACE
+        emailext mimeType: 'text/html',
+        body: '${FILE, path="/var/lib/jenkins/workspace/sonar-email/target/site/jacoco.zip"}',
+        subject: currentBuild.currentResult + " : " + env.JOB_NAME,
+        to: to, attachLog: true
+    }
+}
 pipeline{
     agent any
     tools {
@@ -34,7 +54,15 @@ pipeline{
                     //}
                 
                     waitForQualityGate abortPipeline: true
+                    
+                    SendEmailNotification(currentBuild.result)
                 }
+            }
+       }
+       stage('Email'){
+            steps{
+                SendEmailNotification(currentBuild.result)
+                
             }
        }
         
