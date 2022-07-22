@@ -13,7 +13,7 @@ def SendEmailNotification(String result) {
     if(to != null && !to.isEmpty()) {
         env.ForEmailPlugin = env.WORKSPACE
         emailext mimeType: 'text/html',
-        body: '${FILE, path="/var/lib/jenkins/workspace/sonar-email/target/site/jacoco.zip"}',
+        body: '${FILE, path="/home/mohammad_fazil/jacoco.zip"}',
         subject: currentBuild.currentResult + " : " + env.JOB_NAME,
         to: to, attachLog: true
     }
@@ -61,7 +61,7 @@ pipeline{
             steps{
               script{
                 sh "sudo apt install zip unzip"
-                sh "sudo zip -r jacoco.zip jacoco"
+                sh "sudo zip -r jacoco.zip /var/lib/jenkins/workspace/sonar-email/target/site/jacoco"
               }
             }
        }
