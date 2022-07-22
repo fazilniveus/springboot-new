@@ -60,8 +60,8 @@ pipeline{
       stage('Zip the Report Folder'){
             steps{
               script{
-                sudo apt install zip unzip
-                sudo zip -r jacoco.zip jacoco  
+                sh "sudo apt install zip unzip"
+                sh "sudo zip -r jacoco.zip jacoco"
               }
             }
        }
