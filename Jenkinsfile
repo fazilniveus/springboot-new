@@ -59,8 +59,10 @@ pipeline{
        }
       stage('Zip the Report Folder'){
             steps{
+              scripts{
                 sudo apt install zip unzip
-                sudo zip -r jacoco.zip jacoco                
+                sudo zip -r jacoco.zip jacoco  
+              }
             }
        }
        stage('Email'){
