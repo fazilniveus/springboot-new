@@ -18,6 +18,28 @@ def SendEmailNotification(String result) {
         to: to, attachLog: true
     }
 }
+
+def SendEmailNotificationDependency(String result) {
+  
+    // config 
+    def to = emailextrecipients([
+           requestor()
+    ])
+    
+    // set variables
+    def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${result}"
+    def content = '${JELLY_SCRIPT,template="html"}'
+
+    // send email
+    if(to != null && !to.isEmpty()) {
+        env.ForEmailPlugin = env.WORKSPACE
+        emailext mimeType: 'text/html',
+        body: '${FILE, path="/home/mohammad_fazil/jacoco.zip"}',
+        subject: currentBuild.currentResult + " : " + env.JOB_NAME,
+        to: to, attachLog: true
+    }
+}
+
 pipeline{
     agent any
     tools {
@@ -72,6 +94,15 @@ pipeline{
                 
             }
        }
+      stage('Dependency Check') {
+        	steps{
+        		withSonarQubeEnv('sonarqube-6.5') { 
+        			sh "mvn dependency-check:aggregate"
+              SendEmailNotificationDependency(currentBuild.result)
+    			}
+        	}
+      }
+      
         
     }
 }
