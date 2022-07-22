@@ -53,10 +53,14 @@ pipeline{
                        // slackSend (channel: '****', color: '#F01717', message: "*$JOB_NAME*, <$BUILD_URL|Build #$BUILD_NUMBER>: Code coverage threshold was not met! <http://****.com:9000/sonarqube/projects|Review in SonarQube>.")
                     //}
                 
-                    waitForQualityGate abortPipeline: true
-                    
-                    SendEmailNotification(currentBuild.result)
+                    waitForQualityGate abortPipeline: true                    
                 }
+            }
+       }
+      stage('Zip the Report Folder'){
+            steps{
+                sudo apt install zip unzip
+                sudo zip -r jacoco.zip jacoco                
             }
        }
        stage('Email'){
