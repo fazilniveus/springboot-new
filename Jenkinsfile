@@ -59,7 +59,7 @@ pipeline{
        }
       stage('Zip the Report Folder'){
             steps{
-              scripts{
+              script{
                 sudo apt install zip unzip
                 sudo zip -r jacoco.zip jacoco  
               }
