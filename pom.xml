@@ -18,10 +18,8 @@
 		<java.version>1.8</java.version>
 		<checkstyle.version>2.17</checkstyle.version>
 		
-		<sonar.host.url>http://34.93.149.73:9000/</sonar.host.url>
-		<sonar.projectKey>springcicddemo</sonar.projectKey>
-		<sonar.login>admin</sonar.login>
-		<sonar.password>admin</sonar.password>
+		<sonar.host.url>http://34.93.141.200:9000/</sonar.host.url>
+		<sonar.projectKey>sonar-jenkins</sonar.projectKey>
 		<sonar.scm.provider>git</sonar.scm.provider>
 		<jacoco.version>0.8.6</jacoco.version>
 		<sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
