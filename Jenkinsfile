@@ -61,13 +61,7 @@ pipeline{
         	steps{
         		withSonarQubeEnv('sonarqube-6.5') { 
         			sh "mvn test -Dtest=TestControllerTests  -DfailIfNoTests=false"
-        			sh """
-              mvn clean verify sonar:sonar \
-              -Dsonar.projectKey=sonar-jenkins \
-              -Dsonar.host.url=http://34.93.141.200:9000 \
-              -Dsonar.login=6d6599c9efa9a9e013bd29c1ea98bfaa27b08f5a
-              
-              """
+        			sh "mvn clean install sonar:sonar -Dsonar.login=admin -Dsonar.password=admin"
     			}
         	}
         }
