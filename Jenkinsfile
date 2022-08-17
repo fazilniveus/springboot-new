@@ -61,7 +61,12 @@ pipeline{
         	steps{
         		withSonarQubeEnv('sonarqube-6.5') { 
         			sh "mvn test -Dtest=TestControllerTests  -DfailIfNoTests=false"
-        			sh "mvn clean install sonar:sonar -Dsonar.login=admin -Dsonar.password=admin"
+        			sh """
+              mvn sonar:sonar \
+                -Dsonar.host.url=http://34.93.253.255:9000 \
+                -Dsonar.login=f04c93ad5afe42ea54ec57e3379653b40d5845e6
+
+              """
     			}
         	}
         }
