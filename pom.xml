@@ -18,7 +18,7 @@
 		<java.version>1.8</java.version>
 		<checkstyle.version>2.17</checkstyle.version>
 		
-		<sonar.host.url>http://34.93.30.10:9000</sonar.host.url>
+		<sonar.host.url>http://34.93.30.10:9000 /</sonar.host.url>
 		<sonar.projectKey>sonar-new</sonar.projectKey>
 		<sonar.scm.provider>git</sonar.scm.provider>
 		<jacoco.version>0.8.6</jacoco.version>
@@ -108,6 +108,23 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+              <groupId>org.owasp</groupId>
+              <artifactId>dependency-check-maven</artifactId>
+              <version>7.1.1</version>
+              <!-- 
+              <configuration>
+                  <failBuildOnCVSS>8</failBuildOnCVSS>
+              </configuration>
+               -->
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>check</goal>
+                      </goals>
+                  </execution>
+              </executions>
+            </plugin>
         </plugins>
     </build>
 
