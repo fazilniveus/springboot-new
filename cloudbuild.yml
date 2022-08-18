@@ -3,7 +3,7 @@ steps:
     args: ['install']
   - name: "gcr.io/$PROJECT_ID/sonar-scanner:latest" 
     args: [
-      "mvn clean verify sonar:sonar", 
+      "mvn clean install sonar:sonar", 
       "-Dsonar.projectKey=sonar-new", 
       "-Dsonar.sources=./src", 
       "-Dsonar.host.url=http://34.93.30.10:9000", 
