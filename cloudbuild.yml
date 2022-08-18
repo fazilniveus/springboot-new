@@ -1,0 +1,7 @@
+steps:
+  - name: 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
+    args:
+    - '-Dsonar.host.url=http://34.93.30.10:9000'
+    - '-Dsonar.login=sqp_c367aec82f9d3c16b0589658ddbfe843842e92e8'
+    - '-Dsonar.projectKey=msonar-new'
+tags: ['cloud-builders-community']
