@@ -59,7 +59,7 @@ pipeline{
        }
        stage('SonarQube analysis') {
         	steps{
-        		withSonarQubeEnv('sonarqube-6.5') { 
+        		withSonarQubeEnv('sonarqube-9.6') { 
         			sh "mvn test -Dtest=TestControllerTests  -DfailIfNoTests=false"
         			sh """
               mvn clean verify sonar:sonar \
@@ -103,7 +103,7 @@ pipeline{
        }
       stage('Dependency Check') {
         	steps{
-        		withSonarQubeEnv('sonarqube-6.5') { 
+        		withSonarQubeEnv('sonarqube-9.6') { 
         			sh "mvn dependency-check:aggregate"
               SendEmailNotificationDependency(currentBuild.result)
     			}
