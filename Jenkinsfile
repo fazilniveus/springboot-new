@@ -62,9 +62,11 @@ pipeline{
         		withSonarQubeEnv('sonarqube-6.5') { 
         			sh "mvn test -Dtest=TestControllerTests  -DfailIfNoTests=false"
         			sh """
-              mvn sonar:sonar \
-                -Dsonar.host.url=http://34.93.253.255:9000 \
-                -Dsonar.login=f04c93ad5afe42ea54ec57e3379653b40d5845e6
+              mvn clean verify sonar:sonar \
+                -Dsonar.projectKey=sonar-new \
+                -Dsonar.host.url=http://34.93.30.10:9000 \
+                -Dsonar.login=sqp_c367aec82f9d3c16b0589658ddbfe843842e92e8
+
 
               """
     			}
