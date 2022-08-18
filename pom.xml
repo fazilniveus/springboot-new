@@ -18,8 +18,8 @@
 		<java.version>1.8</java.version>
 		<checkstyle.version>2.17</checkstyle.version>
 		
-		<sonar.host.url>http://34.93.253.255:9000</sonar.host.url>
-		<sonar.projectKey>new-sonar</sonar.projectKey>
+		<sonar.host.url>http://34.93.30.10:9000</sonar.host.url>
+		<sonar.projectKey>sonar-new</sonar.projectKey>
 		<sonar.scm.provider>git</sonar.scm.provider>
 		<jacoco.version>0.8.6</jacoco.version>
 		<sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
