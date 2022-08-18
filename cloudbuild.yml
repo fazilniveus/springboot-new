@@ -1,7 +1,14 @@
 steps:
-  - name: 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
-    args:
-    - '-Dsonar.host.url=http://34.93.30.10:9000'
-    - '-Dsonar.login=sqp_c367aec82f9d3c16b0589658ddbfe843842e92e8'
-    - '-Dsonar.projectKey=msonar-new'
-tags: ['cloud-builders-community']
+  - name: 'gcr.io/cloud-builders/mvn'
+    args: ['install']
+  - name: "gcr.io/$PROJECT_ID/sonar-scanner:latest" 
+    args: [
+      "mvn clean verify sonar:sonar", 
+      "-Dsonar.projectKey=sonar-new", 
+      "-Dsonar.sources=./src", 
+      "-Dsonar.host.url=http://34.93.30.10:9000", 
+      "-Dsonar.login=${_SONAR_TOKEN}",
+      "-Dsonar.java.binaries=.",
+      "-Dsonar.qualitygate.wait=true" ]
+substitutions:
+  _SONAR_TOKEN: "sqp_c367aec82f9d3c16b0589658ddbfe843842e92e8"
