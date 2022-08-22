@@ -64,8 +64,8 @@ pipeline{
         			sh """
               mvn clean verify sonar:sonar \
                 -Dsonar.projectKey=sonar-new \
-                -Dsonar.host.url=http://34.93.30.10:9000 \
-                -Dsonar.login=sqp_1c1cb223c4ab95dce6b318e93e74d8cbc2f0a2bc
+                -Dsonar.host.url=http://34.100.234.157:9000 \
+                -Dsonar.login=sqp_cd73fb154365ef44504137957861d79e997b0f9b
 
 
               """
